@@ -1,4 +1,4 @@
-# Fiori-FlightBookingApp
+# Fiori-FlightBookingApp-OdataService
 
 OData Service Decvelopment in ABAP
 
