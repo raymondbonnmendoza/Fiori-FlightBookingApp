@@ -1,0 +1,14 @@
+<mvc:View
+		controllerName="fiori.demo.controller.secondPage"
+		height="100%"
+		xmlns:mvc="sap.ui.core.mvc"
+		xmlns:core="sap.ui.core"
+		xmlns:layout="sap.ui.layout"
+		xmlns:u="sap.ui.unified"
+		xmlns="sap.m"
+		xmlns:f="sap.f">
+
+	<Page showNavButton="true" title="Second Page" id="secondPage"  navButtonPress="onBack" >
+	
+	</Page>
+</mvc:View>

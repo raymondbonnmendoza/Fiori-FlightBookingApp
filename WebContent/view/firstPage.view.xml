@@ -1,0 +1,199 @@
+<mvc:View
+		controllerName="fiori.demo.controller.firstPage"
+		height="100%"
+		xmlns:mvc="sap.ui.core.mvc"
+		xmlns:core="sap.ui.core"
+		xmlns:layout="sap.ui.layout"
+		xmlns:u="sap.ui.unified"
+		xmlns="sap.m"
+		xmlns:f="sap.f">
+		<f:DynamicPage id="dynamicPageId" headerExpanded="true" toggleHeaderOnTitleClick="false" class="sapUiSizeCompact" >
+			<!-- DynamicPage Title -->
+			<f:title>
+				<f:DynamicPageTitle>
+					<f:heading>
+						<Title text="Flight Booking"/>
+					</f:heading>
+<!-- 					<f:actions>
+						<ToolbarSpacer/>
+						<ToggleButton
+								pressed="{/headerExpanded}"
+							    text="Expand" 
+								type="Transparent"/>
+					</f:actions> -->
+				</f:DynamicPageTitle>
+			</f:title>
+			
+			
+			
+			
+			
+			
+			
+			<!-- DynamicPage Header -->
+			<f:header>
+				<f:DynamicPageHeader pinnable="false">
+					<f:content>
+					
+						<layout:Grid defaultSpan="XL4 L6 M6 S12">
+							<layout:VerticalLayout>
+								<Label text="Origin Airport"/>
+								<Select
+										id="slName"
+										width="230px"
+										forceSelection="true"
+										change="onSelectChange"
+										items="{/Flights}"
+                                                >
+									<core:Item key="{Airline}" text="{FlightNumber}"/>
+								</Select>
+							</layout:VerticalLayout>
+							<layout:VerticalLayout>
+								<Label text="Destination Airport"/>
+								<Select
+										id="slCategory"
+										width="230px"
+										change="onSelectChange"
+										forceSelection="true"
+										items="{
+                                                    path: '/ProductCategories'
+                                                 }">
+									<core:Item key="{key}" text="{name}"/>
+								</Select>
+							</layout:VerticalLayout>
+							<HBox>
+								<RadioButtonGroup columns="2" selectedIndex="1" class="sapUiSmallMarginBottom">
+									<buttons>
+										<RadioButton id="RB2-1" text="One Way" select="onRadio1Press"/>
+										<!-- <RadioButton id="RB2-2" text="Option 2" editable="false"/> -->
+										<RadioButton id="RB2-2" text="Round Trip" select="onRadio2Press"/>
+									</buttons>
+								</RadioButtonGroup>
+							</HBox>
+						
+						</layout:Grid>
+						
+						<layout:Grid defaultSpan="XL4 L6 M6 S12">
+					<layout:VerticalLayout>
+						<Label text="Departure Date" labelFor="DP1"/>
+								<DatePicker
+									id="DP1"
+									placeholder="Enter Date ..."
+									change="handleChange"
+									class="sapUiSmallMarginBottom"/>
+					</layout:VerticalLayout>	
+						
+						<layout:VerticalLayout id="ReturnID">		
+						<Label text="Return Date" labelFor="DP2"/>
+								<DatePicker
+									id="DP2"
+									placeholder="Enter Date ..."
+									change="handleChange"
+									class="sapUiSmallMarginBottom"/>	
+									
+									</layout:VerticalLayout>	
+							</layout:Grid>
+																											
+					</f:content>
+					
+				</f:DynamicPageHeader>
+			</f:header>
+ 
+ 
+			<!-- DynamicPage Content -->
+			<f:content>
+				<VBox
+						class="sapUiSmallMargin">
+				<NavContainer
+					id="navCon"
+					width="98%"
+					height="16em"
+					class="navContainerControl sapUiSmallMarginBottom">		
+
+					<Page
+						id="p1"
+						title="Select Departure Flight" >								
+						<List items="{local>/Flights}">
+							<items>
+								<StandardListItem title="{local>carrid}" 				
+									type="Navigation" press="onSelectDeparture">
+									<customData>
+										<core:CustomData
+											key="target"
+											value="p2" />
+									</customData>
+								</StandardListItem>
+								
+							</items>
+						</List>
+					</Page>
+					
+					<Page
+						id="p2"
+						title="Select Returning Flight" >								
+						<List items="{local>/Flights}">
+							<items>
+								<StandardListItem title="{local>carrid}" 
+								
+								type="Navigation" />
+								
+							</items>
+						</List>
+					</Page>
+				
+				</NavContainer>
+				</VBox>
+				
+	<!-- 			<Table
+						id="idProductsTable"
+						inset="false"
+						items="{
+                            path: '/ProductCollection'
+                        }">
+ 
+					<columns>
+						<Column
+								minScreenWidth="Tablet"
+								demandPopin="true">
+							<Text text="Name"/>
+						</Column>
+						<Column
+								minScreenWidth="Tablet"
+								demandPopin="true">
+							<Text text="Category"/>
+						</Column>
+						<Column
+								minScreenWidth="Tablet"
+								demandPopin="true">
+							<Text text="SupplierName"/>
+						</Column>
+					</columns>
+ 
+					<items>
+						<ColumnListItem
+								vAlign="Middle">
+							<cells>
+								<ObjectIdentifier
+										title="{Name}"
+										text="{ProductId}"/>
+								<Text text="{Category}"/>
+								<Text text="{SupplierName}"/>
+							</cells>
+						</ColumnListItem>
+					</items>
+				</Table> -->
+			</f:content>
+ 
+			<!-- DynamicPage Footer -->
+			<f:footer>
+				<OverflowToolbar>
+					<ToolbarSpacer/>
+<!-- 					<Button type="Accept" text="Accept"/>
+					<Button type="Reject" text="Reject"/> -->
+
+				</OverflowToolbar>
+			</f:footer>
+		</f:DynamicPage>
+
+
+</mvc:View>

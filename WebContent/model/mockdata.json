@@ -1,0 +1,8 @@
+{
+"Flights":[ 
+{"carrid": "Flight00", "connid": "Connid00" },
+{"carrid": "Flight01", "connid": "Connid01" },
+{"carrid": "Flight02", "connid": "Connid02" },
+{"carrid": "Flight03", "connid": "Connid03" }
+]
+}
